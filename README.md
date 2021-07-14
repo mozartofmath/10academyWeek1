@@ -1,10 +1,12 @@
-# PythonPackageStructure
+# TellCo Data Analysis
 
-### General Instruction 
- - Your datasets should be stored in the data folder
- - Your scripts should be stored in the script folder
- - Your notebooks should be stored in the notebook folder
- - Your models should be stored in the model folder
- - Your test files/scripts should be stored in the tests folder
- - All travis yml files should be stored in the root folder
- - Any other files should be placed in the appropriate folder or directory
+## Introduction
+In this project, we are analyzing the customer information of a company called TellCo, an existing mobile service provider in the Republic of Pefkakia.
+Our objective is to provide a report to analyze opportunities for growth and make a recommendation on whether TellCo is worth buying or selling.
+This github repository contains the python code we used in our analysis.
+
+## Instructions
+We used a jupyter notebook to analyze our data. The jupyter notebook file hase the filename **preprocess.ipynb** in the **notebooks** directory. 
+The dataset we used is located in the **data** directory with the filename **Week1_challenge_data_source(CSV).csv**.
+To install the necessary dependencies, execute the command 
+```$ pip install -r requirements.txt"```
