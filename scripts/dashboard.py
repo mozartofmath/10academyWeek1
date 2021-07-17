@@ -7,7 +7,7 @@ def main():
     st.title("TellCo Data Analytics Dashboard")
 
     st.sidebar.write("Navigation")
-    app_mode = st.sidebar.selectbox("Choose Here", ("Home", "Univariate Analysis","Regression Model"))
+    app_mode = st.sidebar.selectbox("Choose Here", ("Home", "Univariate Analysis"))
     if app_mode == 'Home':
         st.write('''
         ## Introduction
@@ -31,7 +31,7 @@ def main():
             ## Some overview of Type 0 users
             ''')
             st.subheader('Sample type 0 users')
-            st.table(dataframe[dataframe['Cluster'] == 0].sample(5))
+            st.table(dataframe[dataframe['Cluster'] == 0].sample(2))
             st.subheader('Statistics on attributes of type 0 users')
             st.table(dataframe[dataframe['Cluster'] == 0][['Engagement_Score', 'Experience_Score',	'Satisfaction_Score']].describe())
 
@@ -40,7 +40,7 @@ def main():
             ## Some overview of Type 1 users
             ''')
             st.subheader('Sample type 1 users')
-            st.table(dataframe[dataframe['Cluster'] == 1].sample(5))
+            st.table(dataframe[dataframe['Cluster'] == 1].sample(2))
             st.subheader('Statistics on attributes of type 1 users')
             st.table(dataframe[dataframe['Cluster'] == 1][['Engagement_Score', 'Experience_Score',	'Satisfaction_Score']].describe())
 
@@ -65,14 +65,6 @@ def main():
         st.subheader('Cluster Plot')
         hist_values = np.histogram(dataframe['Cluster'], bins=2)[0]
         st.bar_chart(hist_values)
-    elif app_mode == 'Regression Model':
-        st.write('''
-        ## Regression Model
-        ''')
-        #reg = pickle.load(open('../models/satisfaction_model.sav', 'rb'))
-        #dataframe = db_execute_fetch("Select * from satisfaction_scores;", dbName = 'telecom_user_satisfaction')
-        
-        #st.image('cloud.png')
     
 if __name__ == "__main__":
     main()
