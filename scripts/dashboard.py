@@ -20,7 +20,30 @@ def main():
         ## Some overview of the data
         ''')
         st.table(dataframe.sample(5))
-        
+
+        st.write('''
+            ## Some overview per user type
+            ''')
+
+        display_mode = st.selectbox("Choose the type of user", ("Type 0 users", "Type 1 users"))
+        if display_mode == 'Type 0 users':
+            st.write('''
+            ## Some overview of Type 0 users
+            ''')
+            st.subheader('Sample type 0 users')
+            st.table(dataframe[dataframe['Cluster'] == 0].sample(5))
+            st.subheader('Statistics on attributes of type 0 users')
+            st.table(dataframe[dataframe['Cluster'] == 0][['Engagement_Score', 'Experience_Score',	'Satisfaction_Score']].describe())
+
+        elif display_mode == 'Type 1 users':
+            st.write('''
+            ## Some overview of Type 1 users
+            ''')
+            st.subheader('Sample type 1 users')
+            st.table(dataframe[dataframe['Cluster'] == 1].sample(5))
+            st.subheader('Statistics on attributes of type 1 users')
+            st.table(dataframe[dataframe['Cluster'] == 1][['Engagement_Score', 'Experience_Score',	'Satisfaction_Score']].describe())
+
     elif app_mode == 'Univariate Analysis':
         st.write('''
         ## Here are a few plots of the variables
@@ -46,6 +69,9 @@ def main():
         st.write('''
         ## Regression Model
         ''')
+        #reg = pickle.load(open('../models/satisfaction_model.sav', 'rb'))
+        #dataframe = db_execute_fetch("Select * from satisfaction_scores;", dbName = 'telecom_user_satisfaction')
+        
         #st.image('cloud.png')
     
 if __name__ == "__main__":
